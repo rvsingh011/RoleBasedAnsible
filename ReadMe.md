@@ -1,11 +1,11 @@
 # Hackathon Starter Ansible Playbook
 
-This Ansible playbook deploy the Hackathon Starter, A boilerplate for Node.js web applications to IKS cluster using ansible. 
+This playbook demonstrae how to use the Ansible to deploy the Hackathon Starter, A boilerplate for Node.js web applications to IKS cluster using ansible k8 roles. 
 Github URL: https://github.com/sahat/hackathon-starter/blob/master/README.md
 
 ## Steps to run with IBM Cloud Schematics. 
 
-1. Create an `Action` with the following payload. 
+1. Create `action.json` with `Action` defination. Edit the payload as per your defination and run IBM Cloud CLI `ibmcloud schematics action create -f payload.json`
 
 ```
 {
@@ -16,7 +16,7 @@ Github URL: https://github.com/sahat/hackathon-starter/blob/master/README.md
    "source": {
        "source_type" : "git",
        "git" : {
-            "git_repo_url": "https://github.com/rvsingh011/AnsiblePlaybook"
+            "git_repo_url": "https://github.com/rvsingh011/RoleBasedAnsible.git"
        }
   },
   "command_parameter": "ansible_playbook.yaml",
@@ -37,7 +37,8 @@ Github URL: https://github.com/sahat/hackathon-starter/blob/master/README.md
 }
 ```
 
-2. Create Job with the above action. 
+2. Create Job to run the above action. Create `job.json` with `job` defination. Edit the `Action ID` from step 1 and run `ibmcloud schematics job create -f payload.json`
+
 ```
 {
   "command_object": "action",
@@ -47,7 +48,7 @@ Github URL: https://github.com/sahat/hackathon-starter/blob/master/README.md
 }
 ```
 
-3. Once the job complete browse to your cluster public ip, Welcome screen should be up and running. 
+3. Once the job complete browse  
 
 ![](./welcome_screen.png)
 
